@@ -1,0 +1,8 @@
+.test{
+    font-size: 50px;
+    color: red;
+}
+.test-status{
+    opacity: 0.5;
+    text-decoration: line-through;
+}
