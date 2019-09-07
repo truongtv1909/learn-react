@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>React-JS</title>
+</head>
+<body>
+
+    <div id ="root"></div>
+  
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        let img = "https://thongtinsao.com/wp-content/uploads/2018/01/tieu-su-dien-vien-trieu-le-dinh-17.jpg";
+        // const Title = React.createElement('div',{
+        //     className: 'title'
+        // },'React tutorials');
+
+        
+        
+        // const Image = React.createElement('img',{
+        //     src: img
+        // },null);
+        const Title = <div className ="title"> Trieu Le Dinh</div> 
+        const Image = <img src="https://thongtinsao.com/wp-content/uploads/2018/01/tieu-su-dien-vien-trieu-le-dinh-17.jpg" alt=""/>
+
+        const App = React.createElement('div', null,Title, Image);
+      
+      
+        const root = document.getElementById('root');
+        ReactDOM.render(App,root);
+    </script>
+
+    </body>
+</body>
+</html>

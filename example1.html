@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>  
+        <!-- Viết ra danh sách các cuốn sách mà bạn thích sử dụng các React element ul, li (dùng React.createElement) -->
+        <div id ="root"></div>
+   
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script>
+            const ul = React.createElement("ul", null, React.createElement("li", null, "React JS"),React.createElement('li',null,'Angular'),React.createElement('li',null,'VueJS'));
+            const ht = React.createElement('div',null,ul);
+            const root = document.getElementById('root');
+            ReactDOM.render(ht,root);
+        </script>
+</body>
+</html>
