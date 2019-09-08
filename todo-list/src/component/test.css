@@ -2,9 +2,10 @@
     font-size: 32px;
     color: red;
     display: flex;
+    transition: all 2s;
 }
 .test-status{
-    opacity: 0.5;
+    opacity: 0.3;
     text-decoration: line-through;
 }
 .img{
