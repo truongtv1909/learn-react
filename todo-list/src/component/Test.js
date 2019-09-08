@@ -1,17 +1,9 @@
 import './test.css'
 import React, { Component } from 'react';
 
-
 class Test extends Component {
-    // constructor(props){
-    //   super(props);
-    //   this.onClickTodo =this.onClickTodo.bind(this)
-    // }
-
-    // onClickTodo(){
-    //   console.log(this.props.name);
-    // }
     render() {
+      console.log(this.props.name);
         const { name, fnClick } = this.props;
         let className = 'test' ;
         if(name.status){

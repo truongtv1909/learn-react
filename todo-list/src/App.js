@@ -35,7 +35,7 @@ class App extends Component {
         });
 
       }
-    }
+    }//end
     render(){
       const {todoItem} = this.state;
       if(todoItem.length){
