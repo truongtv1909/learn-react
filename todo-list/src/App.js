@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import './App.css';
+
 // import './'
 import Demo from './component/Demo';
 import Test from './component/Test';
@@ -12,9 +12,9 @@ class App extends Component {
     this.state ={
     todoItem: [
       { title: 'Test class 1',status: true},
-      { title: 'Test class 2',status: false},
+      { title: 'Test class 2',status: true},
       { title: 'Test class 3',status: false},
-      { title: 'Test class 4',status: true},
+      { title: 'Test class 4',status: false},
       { title: 'Test class 5s',status: false}
     ]
   }
@@ -25,7 +25,6 @@ class App extends Component {
         let curenStatus = e.status;
         let {todoItem} = this.state;
         let index = todoItem.indexOf(e);
-        console.log(index);
         this.setState({
           todoItem: [
             ...todoItem.slice(0, index),
@@ -40,27 +39,28 @@ class App extends Component {
       const {todoItem} = this.state;
       if(todoItem.length){
         return (
-          <div className="App">
-            <header className="App-header">
-              <Demo title="demo1"/>
-              {
-                todoItem.map((x,i)=> 
-                <Test 
-                key = {i}  
-                name = {x} 
-                fnClick={this.onItemClick(x)}/>)
-              }
-    
-            </header>
+          <div className="container">
+            <table className="table table-bordered mt-4">
+              <tbody>
+                <tr>
+                <th scope="col"><Demo title="DEMO TODO LIST"/></th>
+                </tr> 
+                  {
+                  todoItem.map((x,i)=> 
+                  <Test 
+                  key = {i}  
+                  name = {x} 
+                  fnClick={ this.onItemClick(x)}/>)
+                }     
+              </tbody>
+            </table>
           </div>
         );
       }else{
         return (
           <div className ="App">
-            <header className="App-header">
             <Demo title="demo1"/>
             <div>Nothing todo</div>
-            </header>
           </div>
         );
       }

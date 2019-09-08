@@ -1,8 +1,15 @@
 .test{
-    font-size: 50px;
+    font-size: 32px;
     color: red;
+    display: flex;
 }
 .test-status{
     opacity: 0.5;
     text-decoration: line-through;
+}
+.img{
+    margin-left: 10px;
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
 }
