@@ -5,7 +5,6 @@ import uncomplate from '../img/u-complate.svg';
 
 class Test extends Component {
     render() {
-      console.log(this.props.name);
         const { name, fnClick } = this.props;
         let className = 'test';
         let url =complate;

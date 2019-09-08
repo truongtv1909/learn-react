@@ -1,7 +1,4 @@
-// import React from 'react';
 
-
-// import './'
 import Demo from './component/Demo';
 import Test from './component/Test';
 import React, { Component } from 'react';
@@ -10,15 +7,41 @@ class App extends Component {
   constructor(){
     super();
     this.state ={
+    newText:'',
     todoItem: [
-      { title: 'Test class 1',status: true},
-      { title: 'Test class 2',status: true},
-      { title: 'Test class 3',status: false},
-      { title: 'Test class 4',status: false},
-      { title: 'Test class 5s',status: false}
+      { title: 'Vệ sinh cá nhân',status: true},
+      { title: 'Ăn sáng',status: true},
+      { title: 'Đến công ty',status: false},
+      { title: 'Tập gym',status: false},
+      { title: 'Đi dạo',status: false}
     ]
+    }
+    this.onAddTodo = this.onAddTodo.bind(this);
+    this.onChaneText = this.onChaneText.bind(this);
   }
-  }
+    
+    onAddTodo(event){
+      let {todoItem} = this.state;
+        let text = this.refs.k.value;
+        if(event.keyCode ===13){// keyCode 13 = enter
+          if(!text){
+            return;
+          }
+          this.setState({
+          todoItem: [
+            ...todoItem,
+            {title:text,status:false}
+          ],
+          newText: ''
+        });  
+      }
+    }
+
+    onChaneText(event){
+      this.setState({
+        newText: event.target.value
+      })
+    }
 
     onItemClick(e){
       return ()=>{
@@ -40,10 +63,16 @@ class App extends Component {
       if(todoItem.length){
         return (
           <div className="container">
-            <table className="table table-bordered mt-4">
+            <table className="table table-bordered mt-4 shadow">
               <tbody>
                 <tr>
-                <th scope="col"><Demo title="DEMO TODO LIST"/></th>
+                  <th scope="col"><Demo title="DEMO TODO LIST"/></th>
+                </tr> 
+                <tr>
+                  <th>
+                    <input type = "text" className="form-control" onChange = {this.onChaneText} value = {this.state.newText}
+                    placeholder="add new"  onKeyUp ={this.onAddTodo} ref = "k"></input>
+                  </th>
                 </tr> 
                   {
                   todoItem.map((x,i)=> 
