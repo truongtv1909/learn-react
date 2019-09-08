@@ -19,8 +19,22 @@ class App extends Component {
     ]
   }
   }
-    onItemClick(){
-      console.log('click');
+
+    onItemClick(e){
+      return ()=>{
+        let curenStatus = e.status;
+        let {todoItem} = this.state;
+        let index = todoItem.indexOf(e);
+        console.log(index);
+        this.setState({
+          todoItem: [
+            ...todoItem.slice(0, index),
+            {...e, status:!curenStatus},
+            ...todoItem.slice(index + 1)
+          ]
+        });
+
+      }
     }
     render(){
       const {todoItem} = this.state;
@@ -34,7 +48,7 @@ class App extends Component {
                 <Test 
                 key = {i}  
                 name = {x} 
-                onClick={this.onItemClick}/>)
+                fnClick={this.onItemClick(x)}/>)
               }
     
             </header>
