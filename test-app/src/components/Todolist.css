@@ -1,0 +1,11 @@
+.todolist{
+    color: red;
+    font-size: 24px;
+    font-weight: 400;
+    transition: all 1s;
+}
+.complete{
+    text-decoration: line-through;
+    opacity: 0.3;
+    color: green;
+}
