@@ -55,7 +55,6 @@ class App extends Component {
           ...todoItem.slice(index + 1)
         ]
       });
-
     }
   }//end
   render(){
