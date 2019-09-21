@@ -69,7 +69,7 @@ class App extends Component{
           <table className ="table table-bordered mt-4">
             <tbody>
               <tr>
-                <th><Title title="Todo list app-demo" /></th>
+                <th><Title title="">Todo list app-demo</Title></th>
               </tr>
               <tr>
                 <td className="todolist">

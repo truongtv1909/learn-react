@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Todolist.css';
 import classNames from 'classnames';
 import complete from './img/complate.svg'
@@ -26,4 +27,13 @@ class Todolist extends Component{
         );
     }
 }
+
+Todolist.propTypes = {
+    itemTodo: PropTypes.shape({
+        status: PropTypes.bool.isRequired,
+        title: PropTypes.string.isRequired
+    }),
+    click: PropTypes.func
+}
+
 export default Todolist;
