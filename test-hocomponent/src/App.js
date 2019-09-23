@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import AwesomeImage  from './components/AwesomeImage';
+// import HoverImage from './components/HoverImage';
+import withHoverImage from './components/withHoverImage';
+
+const HoverAwesomeImage = withHoverImage(AwesomeImage);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <HoverAwesomeImage src="https://image.thanhnien.vn/800/uploaded/thanhchau/2017_05_31/pbb2_cmrk.jpg" width="500" height="400" />
+      
     </div>
   );
 }
