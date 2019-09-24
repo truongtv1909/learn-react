@@ -1,37 +1,30 @@
 import React,{Component} from 'react';
 
-export default function(WrapComponent,opacity=0.5){
-    return class extends Component{
+export default function (WrapComponent,opa){
+    return class extends Component {
         constructor(props){
-           
             super(props);
-            console.log(this.props);
             this.state={
                 isHover: false
-            }
-            this.onMEnter = this.onMEnter.bind(this);
+            };
+            this.onMouseLe = this.onMouseLe.bind(this);
         }
-        onMEnter(){
+        onMouseEn(){
             this.setState({
                 isHover:true
             });
         }
-        onMouseLev(){
+        onMouseLe(){
             this.setState({
-                isHover:false
+                isHover: false
             });
         }
         render(){
             return(
-                <div onMouseEnter={this.onMEnter}
-                    onMouseLeave={this.onMouseLev.bind(this)}
-                    className="hover-image"
-                    style={{
-                        opacity:this.state.isHover?opacity:1,
-                        transition:"all 0.5s"
-                    }}
-                >
-                <WrapComponent {...this.props} />
+                <div className="hover-image" onMouseEnter={this.onMouseEn.bind(this)} onMouseLeave={this.onMouseLe} 
+                style={{opacity:this.state.isHover?opa:'1',
+                        transition:'all 0.5s'}}>
+                <WrapComponent {...this.props}></WrapComponent>
                 </div>
             );
         }

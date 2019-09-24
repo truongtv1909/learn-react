@@ -18,7 +18,6 @@ return (
         <li className="nav-item active">
             <Link to="/contact" className="nav-link" ><h4>Contact</h4></Link>
         </li>
-   
     </ul>
     </div>
 </nav>
