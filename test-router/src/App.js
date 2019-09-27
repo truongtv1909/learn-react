@@ -6,10 +6,13 @@ import About from './components/About';
 import Contact from './components/Contact';
 import TopMenu from './components/TopMenu';
 import Products from './pages/Products';
+import Cart from './pages/CartPage';
+import {CartProvider} from './contexts/Cart';
+
 
 function App() {
   return (
-
+    <CartProvider>
     <Router>
     <TopMenu></TopMenu>
     <div className="container">
@@ -18,9 +21,11 @@ function App() {
         <Route path="/about" exact component={About}></Route>
         <Route path="/contact" exact component={Contact}></Route>
         <Route path="/products/" exact component={Products}></Route>
+        <Route path="/cart" exact component={Cart} ></Route>
       </div>
     </div>
     </Router>
+    </CartProvider>
   );
 }
 
