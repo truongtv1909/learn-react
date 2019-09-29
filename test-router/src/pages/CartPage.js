@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {CartContext} from '../contexts/Cart';
+import Delete from '../components/img/delete.svg'
 export default class Cart extends Component{
     render(){
         return(
@@ -12,9 +13,10 @@ export default class Cart extends Component{
                             
                             <th>Image</th>
                             <th>Quanlity</th>
+                            <th>Action</th>
                         </tr>
                         <CartContext.Consumer>
-                        {({cartItem,decreasePropduct,increaseProduc})=>(
+                        {({cartItem,decreasePropduct,increaseProduc,deleteCartItem})=>(
                             cartItem.map((item,index)=>(
                                 <tr key={index}>
                                 <td>{item.product.id}</td>
@@ -25,7 +27,9 @@ export default class Cart extends Component{
                                 <button className="btn btn-warning mx-1" onClick={()=>decreasePropduct(item)}>
                                 - </button>{item.quanlity}
                                 <button className="btn btn-warning mx-1" onClick={()=>increaseProduc(item)}> + </button></td>
+                                <td><img alt = "delete" src={Delete} width="30" height="35" onClick={()=>deleteCartItem(item)}></img></td>
                                 </tr>
+                                
                             ))
                         )}
                         </CartContext.Consumer>
