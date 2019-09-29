@@ -9,11 +9,12 @@ export class CartProvider extends Component{
             cartItem:[]
         }
         this.addtoCart = this.addtoCart.bind(this);
+        this.decreasePropduct = this.decreasePropduct.bind(this);
+        this.increaseProduc = this.increaseProduc.bind(this);
     }
     addtoCart(product){
         let index = find(this.state.cartItem,product);
         if(index !== -1){
-            console.log(find(this.state.cartItem,product));
             this.setState({
                 cartItem: [
                     ...this.state.cartItem.slice(0,index),
@@ -41,15 +42,38 @@ export class CartProvider extends Component{
             }
             return index;
         }
-        // console.log(find(this.state.cartItem,product));
+    }
+    increaseProduc(product){
+        let {cartItem} = this.state;
+        let index = cartItem.indexOf(product);
+        this.setState({
+            cartItem: [
+                ...cartItem.slice(0,index),
+                {...cartItem[index],quanlity:cartItem[index].quanlity+1},
+                ...cartItem.slice(index+1)
+            ]
+        });
+    }
+    decreasePropduct(product){
+        console.log(product);
+        let {cartItem} = this.state;
+        let index = cartItem.indexOf(product);
+        this.setState({
+            cartItem:[
+                ...cartItem.slice(0,index),
+                {...cartItem[index],quanlity:cartItem[index].quanlity -1},
+                ...cartItem.slice(index+1)
+            ]
+        });
     }
     render(){
-        console.log(this.state.cartItem)
         return(
             
             <CartContext.Provider value={{
                 cartItem: this.state.cartItem,
-                addtoCart: this.addtoCart
+                addtoCart: this.addtoCart,
+                increaseProduc: this.increaseProduc,
+                decreasePropduct: this.decreasePropduct
             }}>
             {this.props.children}
             </CartContext.Provider>

@@ -22,7 +22,7 @@ export default class Products extends Component{
         const {products} = this.state;
         return(
         <Container>
-        <h2>Products list ( Dữ liệu được gọi API từ host free. Nên chỉ chạy khi có requet, nên có thể phải chờ trong giây lát)</h2>
+        <h2>Products list ( Dữ liệu được gọi API từ host free. Chỉ chạy khi có requet, nên có thể phải chờ trong giây lát)</h2>
             <Row>
                 {products.map((product,index)=>( 
                     

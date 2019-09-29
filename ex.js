@@ -1,13 +1,8 @@
-function list(arr,render){
-    for(item of arr){
-        render(item);
-    }
-}
-
-// function as(i){
-//     console.log('+',i)
-// }
-
-let isArray = ["A","B","C"];
-
-list(isArray,(a)=>console.log(`~${a}~`));
+var obj = {name:"Truong", gfs:['Huyen','Trong','Luan']}
+var c = {...obj}
+c.name = "Tran van truong"
+console.log('gfs: ',c.gfs)
+var cc = c.gfs.push('hai ha');
+// var a = {...obj}
+console.log({obj,c});
+console.log(cc);
