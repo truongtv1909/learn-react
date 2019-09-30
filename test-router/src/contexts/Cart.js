@@ -4,9 +4,17 @@ export const CartContext = React.createContext();
 export class CartProvider extends Component{
     constructor(props){
         super(props);
-        this.state={
-            cartItem:[]
+        let cart = sessionStorage.getItem('cartItem');   
+        if(cart){
+            this.state={
+                cartItem:JSON.parse(cart)
+            }
+        }else{
+            this.state={
+                cartItem:[]
+            }
         }
+
         this.addtoCart = this.addtoCart.bind(this);
         this.decreasePropduct = this.decreasePropduct.bind(this);
         this.increaseProduc = this.increaseProduc.bind(this);
@@ -15,7 +23,7 @@ export class CartProvider extends Component{
     addtoCart(product){
         let index = find(this.state.cartItem,product);
         if(index !== -1){
-            this.setState({
+        this.setState({
                 cartItem: [
                     ...this.state.cartItem.slice(0,index),
                     {...this.state.cartItem[index],quanlity:this.state.cartItem[index].quanlity+1},
@@ -79,6 +87,8 @@ export class CartProvider extends Component{
         });
     }
     render(){
+        let cartJSON= JSON.stringify(this.state.cartItem);
+        sessionStorage.setItem('cartItem', cartJSON);
         return(
             <CartContext.Provider value={{
                 cartItem: this.state.cartItem,
