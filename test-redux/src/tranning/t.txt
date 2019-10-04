@@ -1,0 +1,45 @@
+import { createStore} from 'redux';
+
+let initState = {
+    status: false,
+    sort: {
+        by:'name',
+        value: 1
+    }
+}
+
+let myReducer = (state=initState, action) =>{
+    if(action.type==='TOGGLE_STATUS'){
+        state.status = ! state.status;
+        return state;
+    }
+    if(action.type==='SORT_DECRE'){
+        let {by, value} = action.sort;
+        let {status} = state
+        return {
+            status:status,
+            sort:{
+                by,value
+            }
+        }
+    }
+    return state;
+}
+const store = createStore(myReducer);
+
+console.log('defaul: ',store.getState());
+// thay doi status
+let action1 = {
+    type:'TOGGLE_STATUS'
+};
+let action2 ={
+    type:'SORT_DECRE',
+    sort: {
+        by:'name2',
+        value:-1
+    }
+}
+store.dispatch(action1);
+store.dispatch(action2);
+console.log('actions: ', store.getState());
+
