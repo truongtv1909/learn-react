@@ -18,7 +18,7 @@ class Todolist extends Component{
         return (
             <tr>
                 <td>
-                    <div  className ={classNames('todolist',{'complete':itemTodo.status===true})}>
+                    <div  className ={classNames('todolist',{'complete':itemTodo.status})}>
                         <img onClick = {click} alt="imgs" className="img" src={url} />
                         <p>{itemTodo.title}</p>
                     </div>

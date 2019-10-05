@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import TrafficLight from './component/TrafficLight';
+import * as co from './component/constant/index';
 
-const RED = 0;
-const ORANGE = 1;
-const GREEN = 2;
 class App extends Component{
   constructor(){
     super();
     this.state ={
-      currenColor: RED
+      currenColor: co.RED
   };
   setInterval(()=>{
       this.setState({
@@ -18,12 +16,12 @@ class App extends Component{
   }
   getNextColor(color){
     switch (color){
-        case RED:
-            return ORANGE;
-        case ORANGE:
-            return GREEN;
+        case co.RED:
+            return co.ORANGE;
+        case co.ORANGE:
+            return co.GREEN;
         default:
-            return RED;
+            return co.RED;
     }
 }
   render(){

@@ -8,14 +8,11 @@ class App extends Component{
   
   constructor(){
     super();
+    let dataTodo = JSON.parse(localStorage.getItem('data'))?JSON.parse(localStorage.getItem('data')):[];
+
     this.state = {
       newTodo: '',
-      todoItems: [
-      {title:"An sang",status: true},
-      {title:"Di lam",status: true},
-      {title:"Ve voi vo con",status: false},
-      {title:"Ca nha di choi",status: false}
-      ]
+      todoItems: dataTodo
     }
     this.addNewTodo = this.addNewTodo.bind(this);
     this.onchangeText = this.onchangeText.bind(this);
@@ -33,36 +30,44 @@ class App extends Component{
           ...this.state.todoItems,
           {title:text,status: false}
         ],
-        newTodo:''
+        newTodo:'',
+        
       });
+      
     }
   }
   onCheckAll(){
     let {todoItems} = this.state;
-    console.log(todoItems);
+    let arrComplete = todoItems.map(function(item){
+      if(item.status===false){
+        item= {...item,status:!item.status}     
+      }
+      return item
+    })
+    
+    this.setState({
+      todoItems:arrComplete
+    });
   }
   onchangeText(event){
     this.setState({newTodo:event.target.value});
   }
   onComplete(item){
-    return ()=>{
-      let {todoItems} = this.state;
-      // console.log(todoItems);
-      let currenStatus = item.status;
-      let index = todoItems.indexOf(item);
-      this.setState({
-        todoItems: [
-          ...todoItems.slice(0,index),
-          {
-            ...item,status:!currenStatus
-          },
-          ...todoItems.slice(index+1)
-        ]
-      });
-    }
+    let { todoItems } = this.state;
+    let index = todoItems.indexOf(item);
+    
+
+    this.setState({
+      todoItems: [
+        ...todoItems.slice(0,index),
+        {...todoItems[index],status:!todoItems[index].status},
+        ...todoItems.slice(index+1)
+      ]
+    });
   }
   render(){
     const {todoItems, newTodo} = this.state;
+    localStorage.setItem('data',JSON.stringify(todoItems));
     if(todoItems.length){
       return(
         <div className="container">
@@ -79,7 +84,7 @@ class App extends Component{
                 </td>
               </tr> 
               {
-                todoItems.map((todoItem,index)=><Todolist itemTodo={todoItem} key ={index} click={this.onComplete(todoItem)} />)
+                todoItems.map((todoItem,index)=><Todolist itemTodo={todoItem} key ={index} click={()=>this.onComplete(todoItem)} />)
               }
             </tbody>
           </table>
@@ -88,8 +93,25 @@ class App extends Component{
     }else{
       return(
         <div className="container">
-          <Title title="Todo list app-demo" />
-          <h3>Nothinh todo</h3>
+          
+          <table className ="table table-bordered mt-4">
+            <tbody>
+            <tr>
+            <th><Title>Todo list app-demo</Title></th>
+            </tr>
+            <tr>
+              <td>
+              <input onKeyUp={this.addNewTodo} onChange={this.onchangeText} value={newTodo}
+              type="text" placeholder="Add new todo" className="form-control app-input" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <h3>Nothinh todo</h3>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       )
     }
