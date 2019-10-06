@@ -20,7 +20,8 @@ class App extends Component {
     return (
       <div className="App">
         <button onClick={()=>this.onRemoveElement()} className="btn btn-danger my-2">{this.state.isRemove?'Add':'Remove'}</button>
-        {!this.state.isRemove && <Count></Count>}
+ 
+        <Count></Count>
       </div>
     );
   }

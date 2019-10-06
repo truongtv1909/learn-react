@@ -37,9 +37,13 @@ class Counter extends Component{
     componentWillUnmount(){
         console.log('Count - Willmount');
     }
-    // shouldComponentUpdate(){
-    //     return true;
-    // }
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.count === nextState.count){
+            return false;
+        }
+        console.log(nextProps);
+        return true;
+    }
 }
 
 export default Counter;
