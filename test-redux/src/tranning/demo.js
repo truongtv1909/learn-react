@@ -1,16 +1,17 @@
-import { createStore} from 'redux';
-import { status, sort } from '../tranning/actions/index';
+import {createStore} from 'redux';
+import {status,sort} from './actions/actions';
+import * as actions from './actions/actions';
 import myReducer from './reducers/index';
 
 const store = createStore(myReducer);
-console.log('defaul: ',store.getState());
 
-store.dispatch(status());
-store.dispatch(sort(
-{   
-    by:'name',
-    value:-1
-}
-));
-console.log('actions: ', store.getState());
+console.log(store.getState());
 
+store.dispatch(actions.status());
+
+console.log('change status: ',store.getState());
+store.dispatch(sort({
+    by:'job',
+    value:2
+}));
+console.log('change sort: ', store.getState());
