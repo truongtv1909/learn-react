@@ -54,16 +54,16 @@ render(){
           <div className="col-12">
             
             <div className="card">
-            <div className="card-header bg-info text-left text-light">
-              Add new
-            </div>
-            <div className="card-body">
-            <input className ="form-control" ref="name" onKeyUp={this.onGetkey}></input>
-            
-            <button className="btn btn-primary float-left my-1" onClick={this.onAddTocart}>Add product</button>
-            
-            </div>
-          </div>
+              <div className="card-header bg-info text-left text-light">
+                Add new
+              </div>
+              <div className="card-body">
+                <input className ="form-control" ref="name" onKeyUp={this.onGetkey}></input>
+              
+                <button className="btn btn-primary float-left my-1" onClick={this.onAddTocart}>Add product</button>
+              
+              </div>
+            </div> 
           </div>
         </div>
         <div className="row">

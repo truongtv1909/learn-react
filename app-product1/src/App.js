@@ -1,26 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
 import './App.css';
+import './row2.css';
+import SizeSeting from './components/SizeSeting';
+import ColorPicker from './components/ColorPicker';
+import Result from './components/Result';
 
-function App() {
+class App extends Component {
+  constructor(){
+    super();
+    this.state ={
+      color:'red',
+      fontSize:15
+    }
+    this.onSetColor = this.onSetColor.bind(this);
+    this.onDecrease = this.onDecrease.bind(this);
+    this.onInCrease = this.onInCrease.bind(this);
+    this.onReset = this.onReset.bind(this);
+  }
+  onSetColor(color){
+    this.setState({
+      color:color
+    });
+  }
+  onDecrease(size){
+    if(size>8){
+      this.setState({
+        fontSize: size -1
+      });
+    }
+  }
+  onInCrease(size){
+    if(size<40){
+      this.setState({
+        fontSize: size +1
+      });
+    }
+  }
+
+  onReset(){
+    this.setState({
+      color:'red',
+      fontSize:15
+    });
+  }
+
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <div className="row">
+          <ColorPicker isColor={this.state.color} setColor={this.onSetColor}></ColorPicker>
+          <SizeSeting fontSize ={this.state.fontSize} 
+          deCreaseFont={this.onDecrease} 
+          reset = {this.onReset}
+          inCreaseFont={this.onInCrease}></SizeSeting>
+        </div>
+        <Result color={this.state.color} size ={this.state.fontSize} ></Result>
+      </div>
     </div>
   );
+}
 }
 
 export default App;
