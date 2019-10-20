@@ -13,7 +13,11 @@ class App extends Component {
       tasks: data ? data : [],
       isDisplayForm: false,
       taskEdit: null,
-      filter: null
+      filter: null,
+      sort:{
+        by:'name',
+        value: 1
+      }
     }
     this.onChangeDisplayForm = this.onChangeDisplayForm.bind(this);
     this.onAddNew = this.onAddNew.bind(this);
@@ -21,6 +25,7 @@ class App extends Component {
     this.onRemoveTask = this.onRemoveTask.bind(this);
     this.onEditTask = this.onEditTask.bind(this);
     this.onFilter = this.onFilter.bind(this);
+    this.sort = this.sort.bind(this);
   }
   onChangeDisplayForm() {
     this.setState({
@@ -91,9 +96,19 @@ class App extends Component {
     });
   }
 
+  sort(item){
+    this.setState({
+      sort:{
+        by:item.sortBy,
+        value:item.sortValue
+      }
+    });
+  }
+
   render() {
+    // console.log(this.state.sort);
     localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
-    let { isDisplayForm, tasks, filter } = this.state;
+    let { isDisplayForm, tasks, filter, sort } = this.state;
 
     if (filter) {
       tasks = tasks.filter(task => {
@@ -113,6 +128,21 @@ class App extends Component {
         });
       }
     }
+    if(sort.by === 'name'){
+      tasks.sort((a,b)=>{
+        // console.log(a);
+        if (a.name > b.name) return sort.value;
+        else if(a.name < b.name) return  -sort.value;
+        else return 0;
+      });
+    }
+    else{
+      tasks.sort((a,b)=>{
+        if(a.status > b.status) return -sort.value;
+        else if(a.status < b.status) return sort.value;
+        else return 0;
+      });
+    }
 
     return (
       <div className="App">
@@ -125,7 +155,7 @@ class App extends Component {
                   {!isDisplayForm && <button className="btn btn-primary" onClick={this.onChangeDisplayForm}>Add new</button>}
                 </div>
               </div>
-              <Control fillter={this.onFilter}></Control>
+              <Control fillter={this.onFilter} sort={this.sort}></Control>
               <TaskList tasks={tasks} changeStatus={this.onChangeStatus} removeTask={this.onRemoveTask} editTask={this.onEditTask} ></TaskList>
             </div>
           </div>

@@ -7,7 +7,7 @@ class Search extends Component {
                 <div className="input-group">
                     <input className="form-control"></input>
                     <div className="input-group-append ml-1">
-                        <select class="form-control" name="" id="">
+                        <select className="form-control" name="" id="">
                             <option value={"0"}>All</option>
                             <option value={"1"}>Success</option>
                             <option value={"2"}>Continue</option>

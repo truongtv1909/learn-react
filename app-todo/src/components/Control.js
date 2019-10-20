@@ -7,7 +7,7 @@ class Control extends Component {
         return (
             <div className="row mt-2">
                 <Search fillter={this.props.fillter}></Search>
-                <Sort></Sort>
+                <Sort sort={this.props.sort}></Sort>
             </div>
         );
     }

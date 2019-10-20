@@ -10,7 +10,7 @@ class AddForm extends Component {
                     </div>
                     <div className="card-body">
                         <form>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>New task</label>
                                 <input type="text" className="form-control" name="" />
                             </div>
