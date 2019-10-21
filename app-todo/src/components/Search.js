@@ -6,7 +6,7 @@ class Search extends Component {
         super(props);
         this.state = {
             filtername: '',
-            filterstatus:'0'
+            filterstatus: '0'
         };
         this.onChange = this.onChange.bind(this);
     }
@@ -20,7 +20,7 @@ class Search extends Component {
         }
         this.props.fillter(obj);
         this.setState({
-            [name]:value
+            [name]: value
         });
     }
     render() {
@@ -30,7 +30,7 @@ class Search extends Component {
                     <div className="input-group mb-3">
                         <input type="text" className="form-control" name="filtername" onChange={this.onChange} />
                         <div className="input-group-append mx-1">
-                            <select className="form-control"  onChange={this.onChange} name="filterstatus">
+                            <select className="form-control" onChange={this.onChange} name="filterstatus">
                                 <option value="0">All</option>
                                 <option value="1">Success</option>
                                 <option value="2">Continue</option>

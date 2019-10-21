@@ -6,7 +6,7 @@ class TaskList extends Component {
     render() {
         return (
             <div className="col-8">
-                <Control></Control>
+                <Control sort ={this.props.sort}></Control>
                 <div className="row my-1">
                     <div className="col-12">
                         <table className="table table-striped">

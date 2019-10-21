@@ -1,41 +1,38 @@
-import React, { Component} from 'react';
+import React, { useState} from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-class Example extends Component {
+function Example(props)  {
+    let [dropdownOpen, setDrop] = useState(false);
+    let [sort, setSort] = useState('name');
     
-    constructor(props){
-        super(props);
-        this.state ={
-            dropdownOpen: false
-        }
-        this.toggle = this.toggle.bind(this);
+    const toggle = ()=>{
+        return setDrop(!dropdownOpen);
     }
 
-    
-    toggle() {
-        return this.setState({
-            dropdownOpen: ! this.state.dropdownOpen
-        });
-    }
-
-    SortAZ(){
-        console.log('A -> Z');
-    }
-    render() {
+    function SortAZ(name, value) {
         
-    
+        // await setSort({
+        //     by: name,
+        //     value: value
+        //     });
+        setSort('age');
+            
+        
+    }
+    // console.log('asd: ', sort);
     return (
-        <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} >
+        
+        <ButtonDropdown isOpen={dropdownOpen} toggle={toggle} >
             <DropdownToggle caret color = "primary">
                 Sort by
             </DropdownToggle>
             <DropdownMenu>
-                <DropdownItem onClick={this.SortAZ}>A > Z</DropdownItem>
+                <DropdownItem onClick={()=>SortAZ('age')}>A > Z</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Z > A</DropdownItem>
             </DropdownMenu>
         </ButtonDropdown>
     );
 }
-}
+
 export default Example;

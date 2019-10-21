@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddForm from './components/AddForm';
 import TaskList from './components/TaskList';
+import redux from './components/redux/index';
 
 class App extends Component {
   constructor(props){
@@ -12,13 +13,17 @@ class App extends Component {
     };
   }
 
+  sort = (item) => {
+    // console.log(item);
+  }
+
   render() {
     return (
       <div className="App">
         <div className="container">
           <div className="row mt-2 border p-1">
             <AddForm></AddForm>
-            <TaskList></TaskList>
+            <TaskList sort ={this.sort}></TaskList>
           </div>
         </div>
       </div>

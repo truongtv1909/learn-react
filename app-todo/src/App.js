@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v1';
 import './App.css';
-import TaskFrom from './components/TaskForm';
 import Control from './components/Control';
+import TaskFrom from './components/TaskForm';
 import TaskList from './components/TaskList';
 
 class App extends Component {
@@ -14,8 +14,8 @@ class App extends Component {
       isDisplayForm: false,
       taskEdit: null,
       filter: null,
-      sort:{
-        by:'name',
+      sort: {
+        by: 'name',
         value: 1
       }
     }
@@ -96,11 +96,11 @@ class App extends Component {
     });
   }
 
-  sort(item){
+  sort(item) {
     this.setState({
-      sort:{
-        by:item.sortBy,
-        value:item.sortValue
+      sort: {
+        by: item.sortBy,
+        value: item.sortValue
       }
     });
   }
@@ -128,18 +128,18 @@ class App extends Component {
         });
       }
     }
-    if(sort.by === 'name'){
-      tasks.sort((a,b)=>{
+    if (sort.by === 'name') {
+      tasks.sort((a, b) => {
         // console.log(a);
-        if (a.name > b.name) return sort.value;
-        else if(a.name < b.name) return  -sort.value;
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return sort.value;
+        else if (a.name.toLowerCase() < b.name.toLowerCase()) return -sort.value;
         else return 0;
       });
     }
-    else{
-      tasks.sort((a,b)=>{
-        if(a.status > b.status) return -sort.value;
-        else if(a.status < b.status) return sort.value;
+    else {
+      tasks.sort((a, b) => {
+        if (a.status > b.status) return -sort.value;
+        else if (a.status < b.status) return sort.value;
         else return 0;
       });
     }
